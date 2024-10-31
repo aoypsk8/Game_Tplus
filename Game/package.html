@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet" />
+    <title>Package</title>
+
+
+    <script src="./config/config.js"></script>
+    <script type="module" src="./controller/package.js"></script>
+
+    
+    <link  id="mainStylesheet" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div id="currentPoint" class="mt-6 text-center text-gray-800"></div>
+    <div class="container mx-auto p-6">
+        <div id="card-container" class="grid gap-4 grid-cols-2 md:grid-cols-3"></div>
+    </div>
+
+    <!-- External JavaScript File -->
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainStylesheet = document.getElementById("mainStylesheet");
+            mainStylesheet.href = `${window.config.basePath}/style/ranks.css`;
+        });
+    </script>
+</body>
+
+</html>

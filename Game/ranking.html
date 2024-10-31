@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Top Users</title>
+
+  
+  <script src="./config/config.js"></script>
+  <script type="module" src="./controller/ranking.js"></script>
+
+
+  <link id="mainStylesheet" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+  <div class="bg-white shadow-md rounded-md p-4 mx-auto max-w-sm mt-16">
+    <h2 class="text-xl font-semibold mb-4 text-center lao_font">ອັນດັບຜູ້ທີ່ໄດ້ຄະແນນສູງສຸດ</h2>
+    <ul id="userList"></ul>
+    <button onclick="redirectToPage('index.html')"
+      class="mt-6 bg-gray-700 text-white w-full py-3 rounded-md hover:bg-gray-500 lao_font">
+      ກັບໄປຫນ້າຫລັກ
+    </button>
+  </div>
+  <div id="currentRank" class="mt-6 text-center text-gray-800"></div>
+  <script>
+    var phoneNumberUser;
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      const mainStylesheet = document.getElementById("mainStylesheet");
+      mainStylesheet.href = `${window.config.basePath}/style/ranks.css`;
+      const phone = getQueryParam("phone");
+      phoneNumberUser = phone || '';
+    });
+    function redirectToPage(page) {
+      location.href = `${page}?phone=${phoneNumberUser}`;
+    }
+  </script>
+</body>
+
+</html>

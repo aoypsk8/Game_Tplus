@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&display=swap");
+body {
+  margin: 0;
+  font-family: "Press Start 2P", cursive !important;
+  font-size: 2em;
+  color: white;
+  background-color: black;
+}
+
+.lao_font {
+  font-family: "Noto Sans Lao", sans-serif !important;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: 3px 5px 0px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* Counter position */
+#counter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: aqua;
+}
+
+/* End screen */
+#end {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.7); /* Darken background */
+  z-index: 100; /* Ensure it's above everything else */
+}
+
+#end button {
+  margin-top: 5px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px 30px;
+}
+
+/* Controlls layout */
+#controlls {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#controlls div {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: auto auto;
+  grid-column-gap: 15px;
+  grid-row-gap: 10px;
+  margin-bottom: 50px;
+}
+
+#controlls button {
+  width: 100%;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  padding: 20px 0px;
+}
+
+#controlls button:first-of-type {
+  grid-column: 1/-1;
+}
+
+#controlls {
+  z-index: 10; /* Ensure controls are above other content */
+}
+
+/* Sliding in from the bottom */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Sliding in from the top */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Sliding in from the left */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Sliding in from the right */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+#forward, #left, #backward, #right {
+  display: none;
+}
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Apply animations to the buttons */
+#controlls button {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+/* Example for different directions */
+#forward {
+  animation-name: slideInFromTop;
+}
+
+#backward {
+  animation-name: slideInFromBottom;
+}
+
+#left {
+  animation-name: slideInFromLeft;
+}
+
+#right {
+  animation-name: slideInFromRight;
+}
+#tutorial {
+  position: fixed; /* Ensures the tutorial stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8); /* Dark background */
+  color: white;
+  visibility: hidden; /* Hidden by default */
+  z-index: 200; /* Ensure it's above everything */
+}
+
+#tutorial h4 {
+  margin-bottom: 20px; /* Spacing below the title */
+  text-align: center;
+}
+
+#tutorial p {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#tutorial button {
+  margin-top: 5px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px 30px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Crossy Road Game Clone</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- <link rel="stylesheet" href="./style/styles.css" /> -->
+  
+  <!-- chnange -->
+  <script src="./config/config.js"></script>
+
+  <link id="mainStylesheet" rel="stylesheet" />
+  <script id="mainScript"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <audio id="backgroundMusic" loop>
+    <source id="backgroundMusicSource" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="gameOverSound">
+    <source id="gameOverSoundSource" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div id="counter">0</div>
+
+  <div id="controlls">
+    <div>
+      <button id="forward">
+        <svg width="30" height="30" viewBox="0 0 10 10">
+          <g transform="rotate(0, 5,5)">
+            <path d="M5,4 L7,6 L3,6 L5,4" />
+          </g>
+        </svg>
+      </button>
+      <button id="left">
+        <svg width="30" height="30" viewBox="0 0 10 10">
+          <g transform="rotate(-90, 5,5)">
+            <path d="M5,4 L7,6 L3,6 L5,4" />
+          </g>
+        </svg>
+      </button>
+      <button id="backward">
+        <svg width="30" height="30" viewBox="0 0 10 10">
+          <g transform="rotate(180, 5,5)">
+            <path d="M5,4 L7,6 L3,6 L5,4" />
+          </g>
+        </svg>
+      </button>
+      <button id="right">
+        <svg width="30" height="30" viewBox="0 0 10 10">
+          <g transform="rotate(90, 5,5)">
+            <path d="M5,4 L7,6 L3,6 L5,4" />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="tutorial">
+    <h4 class="lao_font">ວິທີການຫລີ້ນ</h4>
+    <p class="lao_font text-xl">ເລືອນໄປທາງ ເທີງ ລຸ່ມ ຊ້າຍ ຂວາ ເພື່ອເຄື່ອນໄຫວຕົວລະຄອນ</p>
+    <a id="closeTutorial"
+      class=" bg-yellow-100 rounded rounded-xl px-5 py-2 text-lg text-black lao_font cursor-pointer mt-5">ເຂົ້າໃຈແລ້ວ</a>
+  </div>
+
+
+
+  <div id="end">
+    <h3 class="text-2xl font-bold ">GameOver</h3>
+    <p id="scoreDisplay" class="lao_font mt-2">ຄະແນນຂອງເຈົ້າ : 0</p>
+    <a id="retry"
+      class="bg-yellow-100 rounded rounded-xl px-5 py-2 text-lg text-black lao_font cursor-pointer mt-5">ຫຼີ້ນອີກຄັ້ງ</a>
+    <a onclick="redirectToPage('index.html')" class="lao_font text-xl text-red-300 cursor-pointer mt-2">ອອກ</a>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.min.js'></script>
+  <script>
+    var phoneNumberUser;
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      // Once config.js is loaded, set up other elements
+      const mainStylesheet = document.getElementById("mainStylesheet");
+      mainStylesheet.href = `${window.config.basePath}/style/styles.css`;
+
+      // Set the source paths for audio elements
+      const backgroundMusicSource = document.getElementById("backgroundMusicSource");
+      const gameOverSoundSource = document.getElementById("gameOverSoundSource");
+
+      backgroundMusicSource.src = `${window.config.basePath}/sound/music.mp3`;
+      gameOverSoundSource.src = `${window.config.basePath}/sound/game_over.mp3`;
+
+      // Reload audio elements
+      document.getElementById("backgroundMusic").load();
+      document.getElementById("gameOverSound").load();
+
+      // Load the main script after the config is ready
+      const mainScript = document.getElementById("mainScript");
+      mainScript.src = `${window.config.basePath}/controller/script.js`;
+
+
+
+      const phone = getQueryParam("phone");
+      console.log(phone);
+      phoneNumberUser = phone || '';
+    });
+    function redirectToPage(page) {
+      location.href = `${page}?phone=${phoneNumberUser}`;
+    }
+  </script>
+
+</body>
+
+</html>
